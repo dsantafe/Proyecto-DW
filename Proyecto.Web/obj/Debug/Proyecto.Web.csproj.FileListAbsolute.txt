@@ -1,0 +1,11 @@
+c:\users\david\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Web.dll.config
+c:\users\david\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Web.dll
+c:\users\david\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Web.pdb
+c:\users\david\source\repos\Proyecto\Proyecto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+c:\users\david\source\repos\Proyecto\Proyecto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+c:\users\david\source\repos\Proyecto\Proyecto.Web\obj\Debug\Proyecto.Web.csprojResolveAssemblyReference.cache
+c:\users\david\source\repos\Proyecto\Proyecto.Web\obj\Debug\Proyecto.Web.csproj.CoreCompileInputs.cache
+c:\users\david\source\repos\Proyecto\Proyecto.Web\obj\Debug\Proyecto.Web.dll
+c:\users\david\source\repos\Proyecto\Proyecto.Web\obj\Debug\Proyecto.Web.pdb
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.pdb
