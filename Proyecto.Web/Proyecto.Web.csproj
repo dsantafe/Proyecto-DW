@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -160,11 +163,13 @@
     <Content Include="Views\Index\Index.aspx" />
     <Content Include="Views\Login\Login.aspx" />
     <Content Include="Views\PosiblesClientes\PosiblesClientes.aspx" />
+    <Content Include="Views\Tareas\Tareas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PosiblesClientesController.cs" />
+    <Compile Include="Controllers\TareasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Template\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
@@ -193,6 +198,13 @@
     </Compile>
     <Compile Include="Views\PosiblesClientes\PosiblesClientes.aspx.designer.cs">
       <DependentUpon>PosiblesClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tareas\Tareas.aspx.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Tareas\Tareas.aspx.designer.cs">
+      <DependentUpon>Tareas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

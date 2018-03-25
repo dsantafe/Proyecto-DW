@@ -42,9 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\clsConexion.cs" />
+    <Compile Include="BL\clsEstadoTarea.cs" />
     <Compile Include="BL\clsPosiblesClientes.cs" />
+    <Compile Include="BL\clsPrioridad.cs" />
     <Compile Include="BL\clsUsuarios.cs" />
+    <Compile Include="Models\clsEstadoTareas.cs" />
     <Compile Include="Models\clsPosiblesClientes.cs" />
+    <Compile Include="Models\clsPrioridad.cs" />
+    <Compile Include="Models\clsTareas.cs" />
     <Compile Include="Models\clsUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -14,7 +14,7 @@
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
     <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-   
+
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin.css" rel="stylesheet">
 
@@ -38,23 +38,31 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posibles Clientes">
                         <a class="nav-link" href="../../Views/PosiblesClientes/PosiblesClientes.aspx">
                             <i class="fa fa-fw fa-address-book"></i>
                             <span class="nav-link-text">Posibles clientes</span>
                         </a>
                     </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contactos">
                         <a class="nav-link" href="#">
                             <i class="fa fa-fw fa-book"></i>
                             <span class="nav-link-text">Contactos</span>
                         </a>
                     </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tareas">
+                        <a class="nav-link" href="../../Views/Tareas/Tareas.aspx">
+                            <i class="fa fa-fw fa-clipboard"></i>
+                            <span class="nav-link-text">Tareas</span>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../Views/Login/Login.aspx">
-                            <i class="fa fa-fw fa-sign-out"></i>Salir</a>
+                        <asp:Label runat="server" ID="lblUsuario" CssClass="btn btn-primary"></asp:Label>
+                    </li>
+                    <li class="nav-item">
+                        <asp:Button runat="server" ID="btnSalir" CssClass="btn btn-danger" Text="Salir" OnClick="btnSalir_Click" />
                     </li>
                 </ul>
             </div>
@@ -62,7 +70,6 @@
         <div class="content-wrapper">
             <div class="container-fluid">
                 <asp:ContentPlaceHolder ID="contenedor" runat="server">
-
                 </asp:ContentPlaceHolder>
             </div>
             <!-- /.container-fluid-->

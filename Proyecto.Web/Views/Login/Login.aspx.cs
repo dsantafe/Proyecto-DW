@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 
 namespace Proyecto.Web.Views.Login
 {
@@ -6,6 +7,12 @@ namespace Proyecto.Web.Views.Login
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //la primera vez que carga la pagina
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["cookieEmail"] != null)
+                    txtEmail.Text = Request.Cookies["cookieEmail"].Value.ToString();
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -30,7 +37,28 @@ namespace Proyecto.Web.Views.Login
                 bool blBandera = obLoginController.getValidarUsuarioController(obclsUsuarios);
 
                 if (blBandera)
-                    Response.Redirect("../Index/Index.aspx");//redirecciono
+                {
+                    Session["sessionEmail"] = txtEmail.Text;
+
+                    if (chkRecordar.Checked)
+                    {
+                        //creo un objeto cookie
+                        HttpCookie cookie = new HttpCookie("cookieEmail", txtEmail.Text);
+                        //adiciono el tiempo de vida
+                        cookie.Expires = DateTime.Now.AddDays(2);
+                        //agrego a la coleccion de cookies
+                        Response.Cookies.Add(cookie);
+                    }
+                    else
+                    {
+                        HttpCookie cookie = new HttpCookie("cookieEmail", txtEmail.Text);
+                        //expira el dia de ayer
+                        cookie.Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies.Add(cookie);
+                    }
+
+                    Response.Redirect("../Index/Index.aspx?stEmail=" + txtEmail.Text);//redirecciono
+                }
                 else
                     throw new Exception("Usuario o password incorrectos");
             }

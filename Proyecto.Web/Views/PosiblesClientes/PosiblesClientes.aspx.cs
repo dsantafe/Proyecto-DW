@@ -33,7 +33,12 @@ namespace Proyecto.Web.Views.PosiblesClientes
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
+                if (Session["sessionEmail"] == null)
+                    Response.Redirect("../Login/Login.aspx");
+
                 getPosiblesClientes();
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)
@@ -114,7 +119,7 @@ namespace Proyecto.Web.Views.PosiblesClientes
                     Controllers.PosiblesClientesController obPosiblesClientesController = new Controllers.PosiblesClientesController();
 
                     ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "<script> swal('Mensaje!', '" + obPosiblesClientesController.setAdministrarPosiblesClientesController(obclsPosiblesClientes, Convert.ToInt32(lblOpcion.Text)) + "!', 'success') </script>");
-                    
+
                     lblOpcion.Text = string.Empty;
                     getPosiblesClientes();
                 }
