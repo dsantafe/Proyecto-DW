@@ -43,9 +43,12 @@
   <ItemGroup>
     <Compile Include="BL\clsConexion.cs" />
     <Compile Include="BL\clsEstadoTarea.cs" />
+    <Compile Include="BL\clsGeneral.cs" />
     <Compile Include="BL\clsPosiblesClientes.cs" />
     <Compile Include="BL\clsPrioridad.cs" />
+    <Compile Include="BL\clsRecuperarPassword.cs" />
     <Compile Include="BL\clsUsuarios.cs" />
+    <Compile Include="Models\clsCorreo.cs" />
     <Compile Include="Models\clsEstadoTareas.cs" />
     <Compile Include="Models\clsPosiblesClientes.cs" />
     <Compile Include="Models\clsPrioridad.cs" />
