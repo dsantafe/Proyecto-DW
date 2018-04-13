@@ -16,7 +16,7 @@ namespace Proyecto.Web.Resources.Template
                     lblUsuario.Text = stEmail[0];
                 }
                 else
-                    Response.Redirect("../../Views/Login/Login.aspx");
+                    Response.Redirect("../../Views/Login/Login.aspx");                               
             }
         }
 

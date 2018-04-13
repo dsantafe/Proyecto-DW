@@ -48,7 +48,7 @@
                     <asp:Button ID="btnAceptar" runat="server" CssClass="btn btn-primary btn-block" Text="Aceptar" OnClick="btnAceptar_Click" />
                 </form>
                 <div class="text-center">
-                    <a class="d-block small mt-3" href="#">Registrar cuenta</a>
+                    <a class="d-block small mt-3" href="../CrearCuenta/CrearCuenta.aspx">Registrar cuenta</a>
                     <a class="d-block small" href="../RecuperarPassword/RecuperarPassword.aspx">Olvido Password?</a>
                 </div>
             </div>

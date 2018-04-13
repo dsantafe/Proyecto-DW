@@ -161,6 +161,7 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Views\CrearCuenta\CrearCuenta.aspx" />
     <Content Include="Views\Index\Index.aspx" />
     <Content Include="Views\Login\Login.aspx" />
     <Content Include="Views\PosiblesClientes\PosiblesClientes.aspx" />
@@ -169,6 +170,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CrearCuentaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PosiblesClientesController.cs" />
     <Compile Include="Controllers\RecuperarPasswordController.cs" />
@@ -180,6 +182,13 @@
     </Compile>
     <Compile Include="Resources\Template\Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CrearCuenta\CrearCuenta.aspx.cs">
+      <DependentUpon>CrearCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CrearCuenta\CrearCuenta.aspx.designer.cs">
+      <DependentUpon>CrearCuenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Index\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -217,7 +226,10 @@
       <DependentUpon>Tareas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="tmp\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Proyecto.Logica\Proyecto.Logica.csproj">
       <Project>{f9ad0ed0-218a-4bf4-8496-9cdd0fd8b2fc}</Project>

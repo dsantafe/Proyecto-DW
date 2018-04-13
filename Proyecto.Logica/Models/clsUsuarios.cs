@@ -6,5 +6,6 @@
         public string stDescripcion { get; set; }
         public string stLogin { get; set; }
         public string stPassword { get; set; }
+        public string stImagen { get; set; }
     }
 }
