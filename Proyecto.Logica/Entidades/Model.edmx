@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bdGeneralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbEstadoTareas">
+          <Key>
+            <PropertyRef Name="estaCodigo" />
+          </Key>
+          <Property Name="estaCodigo" Type="int" Nullable="false" />
+          <Property Name="estaDescripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tbPosiblesClientes">
+          <Key>
+            <PropertyRef Name="clieIdentificacion" />
+          </Key>
+          <Property Name="clieIdentificacion" Type="bigint" Nullable="false" />
+          <Property Name="clieEmpresa" Type="varchar" MaxLength="50" />
+          <Property Name="cliePrimerNombre" Type="varchar" MaxLength="50" />
+          <Property Name="clieSegundoNombre" Type="varchar" MaxLength="50" />
+          <Property Name="cliePrimerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="clieSegundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="clieDireccion" Type="varchar" MaxLength="50" />
+          <Property Name="clieTelefono" Type="varchar" MaxLength="50" />
+          <Property Name="clieCorreo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbPrioridad">
+          <Key>
+            <PropertyRef Name="prioCodigo" />
+          </Key>
+          <Property Name="prioCodigo" Type="int" Nullable="false" />
+          <Property Name="prioDescripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tbTareas">
+          <Key>
+            <PropertyRef Name="tareCodigo" />
+          </Key>
+          <Property Name="tareCodigo" Type="int" Nullable="false" />
+          <Property Name="tareTitular" Type="varchar" MaxLength="1000" />
+          <Property Name="tareAsunto" Type="varchar" MaxLength="1000" />
+          <Property Name="tareFechaVencimiento" Type="varchar" MaxLength="1000" />
+          <Property Name="tareContacto" Type="varchar" MaxLength="1000" />
+          <Property Name="tareCuenta" Type="varchar" MaxLength="1000" />
+          <Property Name="estaCodigo" Type="int" />
+          <Property Name="prioCodigo" Type="int" />
+          <Property Name="tareEnviarMensaje" Type="char" MaxLength="1" />
+          <Property Name="tareRepetir" Type="char" MaxLength="1" />
+          <Property Name="tareDescripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usuaCodigo" />
+          </Key>
+          <Property Name="usuaCodigo" Type="int" Nullable="false" />
+          <Property Name="usuaDescripcion" Type="varchar" MaxLength="50" />
+          <Property Name="usuaLogin" Type="varchar" MaxLength="50" />
+          <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
+          <Property Name="usuaImagen" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_tbTareas_tbEstadoTareas">
+          <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
+          <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstadoTareas">
+              <PropertyRef Name="estaCodigo" />
+            </Principal>
+            <Dependent Role="tbTareas">
+              <PropertyRef Name="estaCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbTareas_tbPrioridad">
+          <End Role="tbPrioridad" Type="Self.tbPrioridad" Multiplicity="0..1" />
+          <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrioridad">
+              <PropertyRef Name="prioCodigo" />
+            </Principal>
+            <Dependent Role="tbTareas">
+              <PropertyRef Name="prioCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdGeneralModelStoreContainer">
+          <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbTareas" EntityType="Self.tbTareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
+            <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
+            <End Role="tbTareas" EntitySet="tbTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbTareas_tbPrioridad" Association="Self.FK_tbTareas_tbPrioridad">
+            <End Role="tbPrioridad" EntitySet="tbPrioridad" />
+            <End Role="tbTareas" EntitySet="tbTareas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bdGeneralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbEstadoTareas">
+          <Key>
+            <PropertyRef Name="estaCodigo" />
+          </Key>
+          <Property Name="estaCodigo" Type="Int32" Nullable="false" />
+          <Property Name="estaDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbTareas" Relationship="Self.FK_tbTareas_tbEstadoTareas" FromRole="tbEstadoTareas" ToRole="tbTareas" />
+        </EntityType>
+        <EntityType Name="tbPosiblesClientes">
+          <Key>
+            <PropertyRef Name="clieIdentificacion" />
+          </Key>
+          <Property Name="clieIdentificacion" Type="Int64" Nullable="false" />
+          <Property Name="clieEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cliePrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieSegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cliePrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieSegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieDireccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieTelefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="clieCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbPrioridad">
+          <Key>
+            <PropertyRef Name="prioCodigo" />
+          </Key>
+          <Property Name="prioCodigo" Type="Int32" Nullable="false" />
+          <Property Name="prioDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbTareas" Relationship="Self.FK_tbTareas_tbPrioridad" FromRole="tbPrioridad" ToRole="tbTareas" />
+        </EntityType>
+        <EntityType Name="tbTareas">
+          <Key>
+            <PropertyRef Name="tareCodigo" />
+          </Key>
+          <Property Name="tareCodigo" Type="Int32" Nullable="false" />
+          <Property Name="tareTitular" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="tareAsunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="tareFechaVencimiento" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="tareContacto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="tareCuenta" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="estaCodigo" Type="Int32" />
+          <Property Name="prioCodigo" Type="Int32" />
+          <Property Name="tareEnviarMensaje" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tareRepetir" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="tareDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbEstadoTareas" Relationship="Self.FK_tbTareas_tbEstadoTareas" FromRole="tbTareas" ToRole="tbEstadoTareas" />
+          <NavigationProperty Name="tbPrioridad" Relationship="Self.FK_tbTareas_tbPrioridad" FromRole="tbTareas" ToRole="tbPrioridad" />
+        </EntityType>
+        <EntityType Name="tbUsuarios">
+          <Key>
+            <PropertyRef Name="usuaCodigo" />
+          </Key>
+          <Property Name="usuaCodigo" Type="Int32" Nullable="false" />
+          <Property Name="usuaDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_tbTareas_tbEstadoTareas">
+          <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
+          <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbEstadoTareas">
+              <PropertyRef Name="estaCodigo" />
+            </Principal>
+            <Dependent Role="tbTareas">
+              <PropertyRef Name="estaCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbTareas_tbPrioridad">
+          <End Role="tbPrioridad" Type="Self.tbPrioridad" Multiplicity="0..1" />
+          <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbPrioridad">
+              <PropertyRef Name="prioCodigo" />
+            </Principal>
+            <Dependent Role="tbTareas">
+              <PropertyRef Name="prioCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bdGeneralEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" />
+          <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" />
+          <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" />
+          <EntitySet Name="tbTareas" EntityType="Self.tbTareas" />
+          <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
+          <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
+            <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
+            <End Role="tbTareas" EntitySet="tbTareas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbTareas_tbPrioridad" Association="Self.FK_tbTareas_tbPrioridad">
+            <End Role="tbPrioridad" EntitySet="tbPrioridad" />
+            <End Role="tbTareas" EntitySet="tbTareas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bdGeneralModelStoreContainer" CdmEntityContainer="bdGeneralEntities">
+          <EntitySetMapping Name="tbEstadoTareas">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbEstadoTareas">
+              <MappingFragment StoreEntitySet="tbEstadoTareas">
+                <ScalarProperty Name="estaCodigo" ColumnName="estaCodigo" />
+                <ScalarProperty Name="estaDescripcion" ColumnName="estaDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPosiblesClientes">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbPosiblesClientes">
+              <MappingFragment StoreEntitySet="tbPosiblesClientes">
+                <ScalarProperty Name="clieIdentificacion" ColumnName="clieIdentificacion" />
+                <ScalarProperty Name="clieEmpresa" ColumnName="clieEmpresa" />
+                <ScalarProperty Name="cliePrimerNombre" ColumnName="cliePrimerNombre" />
+                <ScalarProperty Name="clieSegundoNombre" ColumnName="clieSegundoNombre" />
+                <ScalarProperty Name="cliePrimerApellido" ColumnName="cliePrimerApellido" />
+                <ScalarProperty Name="clieSegundoApellido" ColumnName="clieSegundoApellido" />
+                <ScalarProperty Name="clieDireccion" ColumnName="clieDireccion" />
+                <ScalarProperty Name="clieTelefono" ColumnName="clieTelefono" />
+                <ScalarProperty Name="clieCorreo" ColumnName="clieCorreo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbPrioridad">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbPrioridad">
+              <MappingFragment StoreEntitySet="tbPrioridad">
+                <ScalarProperty Name="prioCodigo" ColumnName="prioCodigo" />
+                <ScalarProperty Name="prioDescripcion" ColumnName="prioDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbTareas">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbTareas">
+              <MappingFragment StoreEntitySet="tbTareas">
+                <ScalarProperty Name="tareCodigo" ColumnName="tareCodigo" />
+                <ScalarProperty Name="tareTitular" ColumnName="tareTitular" />
+                <ScalarProperty Name="tareAsunto" ColumnName="tareAsunto" />
+                <ScalarProperty Name="tareFechaVencimiento" ColumnName="tareFechaVencimiento" />
+                <ScalarProperty Name="tareContacto" ColumnName="tareContacto" />
+                <ScalarProperty Name="tareCuenta" ColumnName="tareCuenta" />
+                <ScalarProperty Name="estaCodigo" ColumnName="estaCodigo" />
+                <ScalarProperty Name="prioCodigo" ColumnName="prioCodigo" />
+                <ScalarProperty Name="tareEnviarMensaje" ColumnName="tareEnviarMensaje" />
+                <ScalarProperty Name="tareRepetir" ColumnName="tareRepetir" />
+                <ScalarProperty Name="tareDescripcion" ColumnName="tareDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUsuarios">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbUsuarios">
+              <MappingFragment StoreEntitySet="tbUsuarios">
+                <ScalarProperty Name="usuaCodigo" ColumnName="usuaCodigo" />
+                <ScalarProperty Name="usuaDescripcion" ColumnName="usuaDescripcion" />
+                <ScalarProperty Name="usuaLogin" ColumnName="usuaLogin" />
+                <ScalarProperty Name="usuaPassword" ColumnName="usuaPassword" />
+                <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

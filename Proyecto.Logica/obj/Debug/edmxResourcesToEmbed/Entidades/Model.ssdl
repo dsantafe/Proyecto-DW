@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdGeneralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbEstadoTareas">
+    <Key>
+      <PropertyRef Name="estaCodigo" />
+    </Key>
+    <Property Name="estaCodigo" Type="int" Nullable="false" />
+    <Property Name="estaDescripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="tbPosiblesClientes">
+    <Key>
+      <PropertyRef Name="clieIdentificacion" />
+    </Key>
+    <Property Name="clieIdentificacion" Type="bigint" Nullable="false" />
+    <Property Name="clieEmpresa" Type="varchar" MaxLength="50" />
+    <Property Name="cliePrimerNombre" Type="varchar" MaxLength="50" />
+    <Property Name="clieSegundoNombre" Type="varchar" MaxLength="50" />
+    <Property Name="cliePrimerApellido" Type="varchar" MaxLength="50" />
+    <Property Name="clieSegundoApellido" Type="varchar" MaxLength="50" />
+    <Property Name="clieDireccion" Type="varchar" MaxLength="50" />
+    <Property Name="clieTelefono" Type="varchar" MaxLength="50" />
+    <Property Name="clieCorreo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbPrioridad">
+    <Key>
+      <PropertyRef Name="prioCodigo" />
+    </Key>
+    <Property Name="prioCodigo" Type="int" Nullable="false" />
+    <Property Name="prioDescripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="tbTareas">
+    <Key>
+      <PropertyRef Name="tareCodigo" />
+    </Key>
+    <Property Name="tareCodigo" Type="int" Nullable="false" />
+    <Property Name="tareTitular" Type="varchar" MaxLength="1000" />
+    <Property Name="tareAsunto" Type="varchar" MaxLength="1000" />
+    <Property Name="tareFechaVencimiento" Type="varchar" MaxLength="1000" />
+    <Property Name="tareContacto" Type="varchar" MaxLength="1000" />
+    <Property Name="tareCuenta" Type="varchar" MaxLength="1000" />
+    <Property Name="estaCodigo" Type="int" />
+    <Property Name="prioCodigo" Type="int" />
+    <Property Name="tareEnviarMensaje" Type="char" MaxLength="1" />
+    <Property Name="tareRepetir" Type="char" MaxLength="1" />
+    <Property Name="tareDescripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="usuaCodigo" />
+    </Key>
+    <Property Name="usuaCodigo" Type="int" Nullable="false" />
+    <Property Name="usuaDescripcion" Type="varchar" MaxLength="50" />
+    <Property Name="usuaLogin" Type="varchar" MaxLength="50" />
+    <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
+    <Property Name="usuaImagen" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_tbTareas_tbEstadoTareas">
+    <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
+    <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstadoTareas">
+        <PropertyRef Name="estaCodigo" />
+      </Principal>
+      <Dependent Role="tbTareas">
+        <PropertyRef Name="estaCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbTareas_tbPrioridad">
+    <End Role="tbPrioridad" Type="Self.tbPrioridad" Multiplicity="0..1" />
+    <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPrioridad">
+        <PropertyRef Name="prioCodigo" />
+      </Principal>
+      <Dependent Role="tbTareas">
+        <PropertyRef Name="prioCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdGeneralModelStoreContainer">
+    <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbTareas" EntityType="Self.tbTareas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
+      <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
+      <End Role="tbTareas" EntitySet="tbTareas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbTareas_tbPrioridad" Association="Self.FK_tbTareas_tbPrioridad">
+      <End Role="tbPrioridad" EntitySet="tbPrioridad" />
+      <End Role="tbTareas" EntitySet="tbTareas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

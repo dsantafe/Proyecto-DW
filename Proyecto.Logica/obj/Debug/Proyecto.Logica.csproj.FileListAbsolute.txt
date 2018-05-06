@@ -4,3 +4,8 @@ C:\Users\David\source\repos\Proyecto\Proyecto.Logica\obj\Debug\Proyecto.Logica.c
 C:\Users\David\source\repos\Proyecto\Proyecto.Logica\obj\Debug\Proyecto.Logica.csproj.CoreCompileInputs.cache
 C:\Users\David\source\repos\Proyecto\Proyecto.Logica\obj\Debug\Proyecto.Logica.dll
 C:\Users\David\source\repos\Proyecto\Proyecto.Logica\obj\Debug\Proyecto.Logica.pdb
+C:\Users\David\source\repos\Proyecto\Proyecto.Logica\bin\Debug\Proyecto.Logica.dll.config
+C:\Users\David\source\repos\Proyecto\Proyecto.Logica\bin\Debug\EntityFramework.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Logica\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Logica\bin\Debug\EntityFramework.xml
+C:\Users\David\source\repos\Proyecto\Proyecto.Logica\bin\Debug\EntityFramework.SqlServer.xml

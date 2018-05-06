@@ -10,8 +10,8 @@
         public string stCuenta { get; set; }
         public clsEstadoTareas obclsEstadoTareas { get; set; }
         public clsPrioridad obclsPrioridad { get; set; }
-        public char chEnviarMensaje { get; set; }
-        public char chRepetir { get; set; }
+        public string stEnviarMensaje { get; set; }
+        public string stRepetir { get; set; }
         public string stDescripcion { get; set; }
     }
 }

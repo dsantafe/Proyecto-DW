@@ -10,3 +10,8 @@ c:\users\david\source\repos\Proyecto\Proyecto.Web\obj\Debug\Proyecto.Web.pdb
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.dll
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.pdb
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\AjaxControlToolkit.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.SqlServer.dll
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.dll.config
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.xml
+C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.SqlServer.xml

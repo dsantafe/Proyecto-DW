@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdGeneralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbEstadoTareas">
+    <Key>
+      <PropertyRef Name="estaCodigo" />
+    </Key>
+    <Property Name="estaCodigo" Type="Int32" Nullable="false" />
+    <Property Name="estaDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbTareas" Relationship="Self.FK_tbTareas_tbEstadoTareas" FromRole="tbEstadoTareas" ToRole="tbTareas" />
+  </EntityType>
+  <EntityType Name="tbPosiblesClientes">
+    <Key>
+      <PropertyRef Name="clieIdentificacion" />
+    </Key>
+    <Property Name="clieIdentificacion" Type="Int64" Nullable="false" />
+    <Property Name="clieEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cliePrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clieSegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cliePrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clieSegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clieDireccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clieTelefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="clieCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbPrioridad">
+    <Key>
+      <PropertyRef Name="prioCodigo" />
+    </Key>
+    <Property Name="prioCodigo" Type="Int32" Nullable="false" />
+    <Property Name="prioDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbTareas" Relationship="Self.FK_tbTareas_tbPrioridad" FromRole="tbPrioridad" ToRole="tbTareas" />
+  </EntityType>
+  <EntityType Name="tbTareas">
+    <Key>
+      <PropertyRef Name="tareCodigo" />
+    </Key>
+    <Property Name="tareCodigo" Type="Int32" Nullable="false" />
+    <Property Name="tareTitular" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="tareAsunto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="tareFechaVencimiento" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="tareContacto" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="tareCuenta" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="estaCodigo" Type="Int32" />
+    <Property Name="prioCodigo" Type="Int32" />
+    <Property Name="tareEnviarMensaje" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="tareRepetir" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="tareDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbEstadoTareas" Relationship="Self.FK_tbTareas_tbEstadoTareas" FromRole="tbTareas" ToRole="tbEstadoTareas" />
+    <NavigationProperty Name="tbPrioridad" Relationship="Self.FK_tbTareas_tbPrioridad" FromRole="tbTareas" ToRole="tbPrioridad" />
+  </EntityType>
+  <EntityType Name="tbUsuarios">
+    <Key>
+      <PropertyRef Name="usuaCodigo" />
+    </Key>
+    <Property Name="usuaCodigo" Type="Int32" Nullable="false" />
+    <Property Name="usuaDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuaLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuaPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="usuaImagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_tbTareas_tbEstadoTareas">
+    <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
+    <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbEstadoTareas">
+        <PropertyRef Name="estaCodigo" />
+      </Principal>
+      <Dependent Role="tbTareas">
+        <PropertyRef Name="estaCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tbTareas_tbPrioridad">
+    <End Role="tbPrioridad" Type="Self.tbPrioridad" Multiplicity="0..1" />
+    <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbPrioridad">
+        <PropertyRef Name="prioCodigo" />
+      </Principal>
+      <Dependent Role="tbTareas">
+        <PropertyRef Name="prioCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdGeneralEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" />
+    <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" />
+    <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" />
+    <EntitySet Name="tbTareas" EntityType="Self.tbTareas" />
+    <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" />
+    <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
+      <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
+      <End Role="tbTareas" EntitySet="tbTareas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbTareas_tbPrioridad" Association="Self.FK_tbTareas_tbPrioridad">
+      <End Role="tbPrioridad" EntitySet="tbPrioridad" />
+      <End Role="tbTareas" EntitySet="tbTareas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

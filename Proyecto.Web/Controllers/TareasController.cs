@@ -36,5 +36,79 @@ namespace Proyecto.Web.Controllers
             }
             catch (Exception ex) { throw ex; }
         }
+
+        /// <summary>
+        /// ADICIONA UNA TAREA
+        /// </summary>
+        /// <param name="obclsTareas">MODELO DE TAREAS</param>
+        /// <returns></returns>
+        public string addTareasController(Logica.Models.clsTareas obclsTareasModel)
+        {
+            try
+            {
+                Logica.BL.clsTareas obclsTareas = new Logica.BL.clsTareas();
+                return obclsTareas.addTareas(obclsTareasModel);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        /// <summary>
+        /// MODIFICA UNA TAREA
+        /// </summary>
+        /// <param name="obclsTareas">MODELO DE TAREAS</param>
+        /// <returns></returns>
+        public string updateTareasController(Logica.Models.clsTareas obclsTareasModel)
+        {
+            try
+            {
+                Logica.BL.clsTareas obclsTareas = new Logica.BL.clsTareas();
+                return obclsTareas.updateTareas(obclsTareasModel);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        /// <summary>
+        /// ELIMINA UNA TAREA
+        /// </summary>
+        /// <param name="obclsTareas">MODELO DE TAREAS</param>
+        /// <returns></returns>
+        public string deleteTareasController(Logica.Models.clsTareas obclsTareasModel)
+        {
+            try
+            {
+                Logica.BL.clsTareas obclsTareas = new Logica.BL.clsTareas();
+                return obclsTareas.deleteTareas(obclsTareasModel);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        /// <summary>
+        /// CONSULTA UNA TAREA
+        /// </summary>
+        /// <param name="obclsTareas">MODELO DE TAREAS</param>
+        /// <returns></returns>
+        public List<Logica.Models.clsTareas> getTareasController(Logica.Models.clsTareas obclsTareasModel)
+        {
+            try
+            {
+                Logica.BL.clsTareas obclsTareas = new Logica.BL.clsTareas();
+                return obclsTareas.getTareas(obclsTareasModel);
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        /// <summary>
+        /// CONSULTA TAREAS
+        /// </summary>
+        /// <returns></returns>
+        public List<Logica.Models.clsTareas> getTareasController()
+        {
+            try
+            {
+                Logica.BL.clsTareas obclsTareas = new Logica.BL.clsTareas();
+                return obclsTareas.getTareas();
+            }
+            catch (Exception ex) { throw ex; }
+        }
     }
 }
