@@ -7,6 +7,19 @@
     <Property Name="estaCodigo" Type="int" Nullable="false" />
     <Property Name="estaDescripcion" Type="varchar" MaxLength="1000" />
   </EntityType>
+  <EntityType Name="tbEventos">
+    <Key>
+      <PropertyRef Name="evenCodigo" />
+    </Key>
+    <Property Name="evenCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="evenNombre" Type="varchar" MaxLength="1000" />
+    <Property Name="evenUbicacion" Type="varchar" MaxLength="1000" />
+    <Property Name="evenParticipantes" Type="varchar" MaxLength="1000" />
+    <Property Name="evenTodoDia" Type="char" MaxLength="1" />
+    <Property Name="evenFecha" Type="varchar" MaxLength="1000" />
+    <Property Name="recoCodigo" Type="int" />
+    <Property Name="evenDescripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="tbPosiblesClientes">
     <Key>
       <PropertyRef Name="clieIdentificacion" />
@@ -27,6 +40,13 @@
     </Key>
     <Property Name="prioCodigo" Type="int" Nullable="false" />
     <Property Name="prioDescripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="tbRelacionadoCon">
+    <Key>
+      <PropertyRef Name="recoCodigo" />
+    </Key>
+    <Property Name="recoCodigo" Type="int" Nullable="false" />
+    <Property Name="recoDescripcion" Type="varchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="tbTareas">
     <Key>
@@ -54,6 +74,18 @@
     <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
     <Property Name="usuaImagen" Type="varchar(max)" />
   </EntityType>
+  <Association Name="FK_tbEventos_tbRelacionadoCon">
+    <End Role="tbRelacionadoCon" Type="Self.tbRelacionadoCon" Multiplicity="0..1" />
+    <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbRelacionadoCon">
+        <PropertyRef Name="recoCodigo" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="recoCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbTareas_tbEstadoTareas">
     <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
     <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
@@ -80,10 +112,16 @@
   </Association>
   <EntityContainer Name="bdGeneralModelStoreContainer">
     <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbEventos" EntityType="Self.tbEventos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbRelacionadoCon" EntityType="Self.tbRelacionadoCon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbTareas" EntityType="Self.tbTareas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tbEventos_tbRelacionadoCon" Association="Self.FK_tbEventos_tbRelacionadoCon">
+      <End Role="tbRelacionadoCon" EntitySet="tbRelacionadoCon" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
       <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
       <End Role="tbTareas" EntitySet="tbTareas" />

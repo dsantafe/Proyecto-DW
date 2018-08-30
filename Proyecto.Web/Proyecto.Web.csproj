@@ -57,6 +57,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -122,6 +125,19 @@
     <Content Include="vendor\jquery\jquery.min.map" />
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Resources\Template\Template.Master" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Eventos\Eventos.aspx" />
+    <Content Include="Web References\wsServicios\clsEventos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\wsServicios\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\wsServicios\wsServicios.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -173,15 +189,22 @@
     <Content Include="Views\PosiblesClientes\PosiblesClientes.aspx" />
     <Content Include="Views\RecuperarPassword\RecuperarPassword.aspx" />
     <Content Include="Views\Tareas\Tareas.aspx" />
+    <None Include="Web References\wsServicios\wsServicios.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CrearCuentaController.cs" />
+    <Compile Include="Controllers\EventosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PosiblesClientesController.cs" />
     <Compile Include="Controllers\RecuperarPasswordController.cs" />
     <Compile Include="Controllers\TareasController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Template\Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +218,13 @@
     </Compile>
     <Compile Include="Views\CrearCuenta\CrearCuenta.aspx.designer.cs">
       <DependentUpon>CrearCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Eventos\Eventos.aspx.cs">
+      <DependentUpon>Eventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Eventos\Eventos.aspx.designer.cs">
+      <DependentUpon>Eventos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Index\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -231,6 +261,11 @@
     <Compile Include="Views\Tareas\Tareas.aspx.designer.cs">
       <DependentUpon>Tareas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\wsServicios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
@@ -241,6 +276,25 @@
       <Project>{f9ad0ed0-218a-4bf4-8496-9cdd0fd8b2fc}</Project>
       <Name>Proyecto.Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/Proyecto.WS/Servicios/wsServicios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\wsServicios\</RelPath>
+      <UpdateFromURL>http://localhost/Proyecto.WS/Servicios/wsServicios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Proyecto_Web_wsServicios_wsServicios</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

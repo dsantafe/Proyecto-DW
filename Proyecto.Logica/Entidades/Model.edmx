@@ -4,13 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bdGeneralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bdGeneralModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbEstadoTareas">
           <Key>
             <PropertyRef Name="estaCodigo" />
           </Key>
           <Property Name="estaCodigo" Type="int" Nullable="false" />
           <Property Name="estaDescripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tbEventos">
+          <Key>
+            <PropertyRef Name="evenCodigo" />
+          </Key>
+          <Property Name="evenCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="evenNombre" Type="varchar" MaxLength="1000" />
+          <Property Name="evenUbicacion" Type="varchar" MaxLength="1000" />
+          <Property Name="evenParticipantes" Type="varchar" MaxLength="1000" />
+          <Property Name="evenTodoDia" Type="char" MaxLength="1" />
+          <Property Name="evenFecha" Type="varchar" MaxLength="1000" />
+          <Property Name="recoCodigo" Type="int" />
+          <Property Name="evenDescripcion" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tbPosiblesClientes">
           <Key>
@@ -32,6 +45,13 @@
           </Key>
           <Property Name="prioCodigo" Type="int" Nullable="false" />
           <Property Name="prioDescripcion" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="tbRelacionadoCon">
+          <Key>
+            <PropertyRef Name="recoCodigo" />
+          </Key>
+          <Property Name="recoCodigo" Type="int" Nullable="false" />
+          <Property Name="recoDescripcion" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="tbTareas">
           <Key>
@@ -59,6 +79,18 @@
           <Property Name="usuaPassword" Type="varchar" MaxLength="50" />
           <Property Name="usuaImagen" Type="varchar(max)" />
         </EntityType>
+        <Association Name="FK_tbEventos_tbRelacionadoCon">
+          <End Role="tbRelacionadoCon" Type="Self.tbRelacionadoCon" Multiplicity="0..1" />
+          <End Role="tbEventos" Type="Self.tbEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRelacionadoCon">
+              <PropertyRef Name="recoCodigo" />
+            </Principal>
+            <Dependent Role="tbEventos">
+              <PropertyRef Name="recoCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbTareas_tbEstadoTareas">
           <End Role="tbEstadoTareas" Type="Self.tbEstadoTareas" Multiplicity="0..1" />
           <End Role="tbTareas" Type="Self.tbTareas" Multiplicity="*" />
@@ -85,10 +117,16 @@
         </Association>
         <EntityContainer Name="bdGeneralModelStoreContainer">
           <EntitySet Name="tbEstadoTareas" EntityType="Self.tbEstadoTareas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbEventos" EntityType="Self.tbEventos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPosiblesClientes" EntityType="Self.tbPosiblesClientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbPrioridad" EntityType="Self.tbPrioridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbRelacionadoCon" EntityType="Self.tbRelacionadoCon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbTareas" EntityType="Self.tbTareas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbUsuarios" EntityType="Self.tbUsuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbEventos_tbRelacionadoCon" Association="Self.FK_tbEventos_tbRelacionadoCon">
+            <End Role="tbRelacionadoCon" EntitySet="tbRelacionadoCon" />
+            <End Role="tbEventos" EntitySet="tbEventos" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbTareas_tbEstadoTareas" Association="Self.FK_tbTareas_tbEstadoTareas">
             <End Role="tbEstadoTareas" EntitySet="tbEstadoTareas" />
             <End Role="tbTareas" EntitySet="tbTareas" />
@@ -98,8 +136,7 @@
             <End Role="tbTareas" EntitySet="tbTareas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bdGeneralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -199,7 +236,47 @@
             <End Role="tbPrioridad" EntitySet="tbPrioridad" />
             <End Role="tbTareas" EntitySet="tbTareas" />
           </AssociationSet>
+          <EntitySet Name="tbEventos" EntityType="bdGeneralModel.tbEventos" />
+          <EntitySet Name="tbRelacionadoCon" EntityType="bdGeneralModel.tbRelacionadoCon" />
+          <AssociationSet Name="FK_tbEventos_tbRelacionadoCon" Association="bdGeneralModel.FK_tbEventos_tbRelacionadoCon">
+            <End Role="tbRelacionadoCon" EntitySet="tbRelacionadoCon" />
+            <End Role="tbEventos" EntitySet="tbEventos" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="tbEventos">
+          <Key>
+            <PropertyRef Name="evenCodigo" />
+          </Key>
+          <Property Name="evenCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="evenNombre" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="evenUbicacion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="evenParticipantes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="evenTodoDia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="evenFecha" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="recoCodigo" Type="Int32" />
+          <Property Name="evenDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbRelacionadoCon" Relationship="bdGeneralModel.FK_tbEventos_tbRelacionadoCon" FromRole="tbEventos" ToRole="tbRelacionadoCon" />
+        </EntityType>
+        <EntityType Name="tbRelacionadoCon">
+          <Key>
+            <PropertyRef Name="recoCodigo" />
+          </Key>
+          <Property Name="recoCodigo" Type="Int32" Nullable="false" />
+          <Property Name="recoDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbEventos" Relationship="bdGeneralModel.FK_tbEventos_tbRelacionadoCon" FromRole="tbRelacionadoCon" ToRole="tbEventos" />
+        </EntityType>
+        <Association Name="FK_tbEventos_tbRelacionadoCon">
+          <End Type="bdGeneralModel.tbRelacionadoCon" Role="tbRelacionadoCon" Multiplicity="0..1" />
+          <End Type="bdGeneralModel.tbEventos" Role="tbEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbRelacionadoCon">
+              <PropertyRef Name="recoCodigo" />
+            </Principal>
+            <Dependent Role="tbEventos">
+              <PropertyRef Name="recoCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -262,6 +339,28 @@
                 <ScalarProperty Name="usuaLogin" ColumnName="usuaLogin" />
                 <ScalarProperty Name="usuaPassword" ColumnName="usuaPassword" />
                 <ScalarProperty Name="usuaImagen" ColumnName="usuaImagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbEventos">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbEventos">
+              <MappingFragment StoreEntitySet="tbEventos">
+                <ScalarProperty Name="evenDescripcion" ColumnName="evenDescripcion" />
+                <ScalarProperty Name="recoCodigo" ColumnName="recoCodigo" />
+                <ScalarProperty Name="evenFecha" ColumnName="evenFecha" />
+                <ScalarProperty Name="evenTodoDia" ColumnName="evenTodoDia" />
+                <ScalarProperty Name="evenParticipantes" ColumnName="evenParticipantes" />
+                <ScalarProperty Name="evenUbicacion" ColumnName="evenUbicacion" />
+                <ScalarProperty Name="evenNombre" ColumnName="evenNombre" />
+                <ScalarProperty Name="evenCodigo" ColumnName="evenCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRelacionadoCon">
+            <EntityTypeMapping TypeName="bdGeneralModel.tbRelacionadoCon">
+              <MappingFragment StoreEntitySet="tbRelacionadoCon">
+                <ScalarProperty Name="recoDescripcion" ColumnName="recoDescripcion" />
+                <ScalarProperty Name="recoCodigo" ColumnName="recoCodigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -60,5 +60,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbEventos">
+      <EntityTypeMapping TypeName="bdGeneralModel.tbEventos">
+        <MappingFragment StoreEntitySet="tbEventos">
+          <ScalarProperty Name="evenDescripcion" ColumnName="evenDescripcion" />
+          <ScalarProperty Name="recoCodigo" ColumnName="recoCodigo" />
+          <ScalarProperty Name="evenFecha" ColumnName="evenFecha" />
+          <ScalarProperty Name="evenTodoDia" ColumnName="evenTodoDia" />
+          <ScalarProperty Name="evenParticipantes" ColumnName="evenParticipantes" />
+          <ScalarProperty Name="evenUbicacion" ColumnName="evenUbicacion" />
+          <ScalarProperty Name="evenNombre" ColumnName="evenNombre" />
+          <ScalarProperty Name="evenCodigo" ColumnName="evenCodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbRelacionadoCon">
+      <EntityTypeMapping TypeName="bdGeneralModel.tbRelacionadoCon">
+        <MappingFragment StoreEntitySet="tbRelacionadoCon">
+          <ScalarProperty Name="recoDescripcion" ColumnName="recoDescripcion" />
+          <ScalarProperty Name="recoCodigo" ColumnName="recoCodigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

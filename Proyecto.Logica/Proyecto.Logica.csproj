@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -52,10 +55,12 @@
   <ItemGroup>
     <Compile Include="BL\clsConexion.cs" />
     <Compile Include="BL\clsEstadoTarea.cs" />
+    <Compile Include="BL\clsEventos.cs" />
     <Compile Include="BL\clsGeneral.cs" />
     <Compile Include="BL\clsPosiblesClientes.cs" />
     <Compile Include="BL\clsPrioridad.cs" />
     <Compile Include="BL\clsRecuperarPassword.cs" />
+    <Compile Include="BL\clsRelacionadoCon.cs" />
     <Compile Include="BL\clsTareas.cs" />
     <Compile Include="BL\clsUsuarios.cs" />
     <Compile Include="Entidades\Model.Context.cs">
@@ -76,10 +81,16 @@
     <Compile Include="Entidades\tbEstadoTareas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\tbEventos.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\tbPosiblesClientes.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\tbPrioridad.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\tbRelacionadoCon.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\tbTareas.cs">
@@ -90,8 +101,10 @@
     </Compile>
     <Compile Include="Models\clsCorreo.cs" />
     <Compile Include="Models\clsEstadoTareas.cs" />
+    <Compile Include="Models\clsEventos.cs" />
     <Compile Include="Models\clsPosiblesClientes.cs" />
     <Compile Include="Models\clsPrioridad.cs" />
+    <Compile Include="Models\clsRelacionadoCon.cs" />
     <Compile Include="Models\clsTareas.cs" />
     <Compile Include="Models\clsUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

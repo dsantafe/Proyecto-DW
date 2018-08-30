@@ -58,6 +58,12 @@
                             <span class="nav-link-text">Tareas</span>
                         </a>
                     </li>
+                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Eventos">
+                        <a class="nav-link" href="../../Views/Eventos/Eventos.aspx">
+                            <i class="fa fa-fw fa-clipboard"></i>
+                            <span class="nav-link-text">Eventos</span>
+                        </a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">

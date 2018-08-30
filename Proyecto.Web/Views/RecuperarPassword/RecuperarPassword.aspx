@@ -34,7 +34,7 @@
                 <div class="card-body">
 
                     <div class="text-center mt-4 mb-5">
-                        <h4>Olvido password?</h4>
+                        <h4>Olvidó password?</h4>
                         <p>Ingrese su direccion de correo electronico y nosotros enviaremos las instrucciones para 
                             la recuperacion de su password.
                         </p>

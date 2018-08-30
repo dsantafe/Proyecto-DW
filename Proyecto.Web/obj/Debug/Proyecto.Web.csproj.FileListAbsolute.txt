@@ -15,3 +15,22 @@ C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.SqlServer.
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\Proyecto.Logica.dll.config
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.xml
 C:\Users\David\source\repos\Proyecto\Proyecto.Web\bin\EntityFramework.SqlServer.xml
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Web.dll.config
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Web.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Web.pdb
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\AjaxControlToolkit.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\EntityFramework.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\EntityFramework.SqlServer.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Newtonsoft.Json.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Logica.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Logica.pdb
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Proyecto.Logica.dll.config
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\EntityFramework.xml
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\EntityFramework.SqlServer.xml
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\bin\Newtonsoft.Json.xml
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\obj\Debug\Proyecto.Web.csprojResolveAssemblyReference.cache
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\obj\Debug\Proyecto.Web.csproj.CoreCompileInputs.cache
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\obj\Debug\Proyecto.Web.dll
+C:\Users\David\source\repos\Proyecto Videos\Proyecto.Web\obj\Debug\Proyecto.Web.pdb

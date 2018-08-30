@@ -96,5 +96,45 @@
       <End Role="tbPrioridad" EntitySet="tbPrioridad" />
       <End Role="tbTareas" EntitySet="tbTareas" />
     </AssociationSet>
+    <EntitySet Name="tbEventos" EntityType="bdGeneralModel.tbEventos" />
+    <EntitySet Name="tbRelacionadoCon" EntityType="bdGeneralModel.tbRelacionadoCon" />
+    <AssociationSet Name="FK_tbEventos_tbRelacionadoCon" Association="bdGeneralModel.FK_tbEventos_tbRelacionadoCon">
+      <End Role="tbRelacionadoCon" EntitySet="tbRelacionadoCon" />
+      <End Role="tbEventos" EntitySet="tbEventos" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="tbEventos">
+    <Key>
+      <PropertyRef Name="evenCodigo" />
+    </Key>
+    <Property Name="evenCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="evenNombre" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="evenUbicacion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="evenParticipantes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="evenTodoDia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="evenFecha" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="recoCodigo" Type="Int32" />
+    <Property Name="evenDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbRelacionadoCon" Relationship="bdGeneralModel.FK_tbEventos_tbRelacionadoCon" FromRole="tbEventos" ToRole="tbRelacionadoCon" />
+  </EntityType>
+  <EntityType Name="tbRelacionadoCon">
+    <Key>
+      <PropertyRef Name="recoCodigo" />
+    </Key>
+    <Property Name="recoCodigo" Type="Int32" Nullable="false" />
+    <Property Name="recoDescripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbEventos" Relationship="bdGeneralModel.FK_tbEventos_tbRelacionadoCon" FromRole="tbRelacionadoCon" ToRole="tbEventos" />
+  </EntityType>
+  <Association Name="FK_tbEventos_tbRelacionadoCon">
+    <End Type="bdGeneralModel.tbRelacionadoCon" Role="tbRelacionadoCon" Multiplicity="0..1" />
+    <End Type="bdGeneralModel.tbEventos" Role="tbEventos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbRelacionadoCon">
+        <PropertyRef Name="recoCodigo" />
+      </Principal>
+      <Dependent Role="tbEventos">
+        <PropertyRef Name="recoCodigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
