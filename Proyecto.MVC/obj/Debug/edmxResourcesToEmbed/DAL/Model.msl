@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bdGeneralModelStoreContainer" CdmEntityContainer="bdGeneralEntities">
+    <EntitySetMapping Name="estado_incidencia">
+      <EntityTypeMapping TypeName="bdGeneralModel.estado_incidencia">
+        <MappingFragment StoreEntitySet="estado_incidencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incidencia">
+      <EntityTypeMapping TypeName="bdGeneralModel.incidencia">
+        <MappingFragment StoreEntitySet="incidencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="primer_nombre" ColumnName="primer_nombre" />
+          <ScalarProperty Name="segundo_nombre" ColumnName="segundo_nombre" />
+          <ScalarProperty Name="primer_apellido" ColumnName="primer_apellido" />
+          <ScalarProperty Name="segundo_apellido" ColumnName="segundo_apellido" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="estado_incidencia_id" ColumnName="estado_incidencia_id" />
+          <ScalarProperty Name="tipo_incidencia_id" ColumnName="tipo_incidencia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="incidencia_comentarios">
+      <EntityTypeMapping TypeName="bdGeneralModel.incidencia_comentarios">
+        <MappingFragment StoreEntitySet="incidencia_comentarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="incidencia_id" ColumnName="incidencia_id" />
+          <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+          <ScalarProperty Name="estado_incidencia_id" ColumnName="estado_incidencia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_incidencia">
+      <EntityTypeMapping TypeName="bdGeneralModel.tipo_incidencia">
+        <MappingFragment StoreEntitySet="tipo_incidencia">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

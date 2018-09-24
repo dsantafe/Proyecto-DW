@@ -1,0 +1,29 @@
+﻿@model Proyecto.MVC.DAL.tipo_incidencia
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <h4>Eliminar</h4>
+    <h3 class="badge badge-danger">Esta seguro que desea eliminar el registro?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+        <dd>
+            @Html.EditorFor(model => model.descripcion, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Aceptar" class="btn btn-primary btn-sm" /> |
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+    }
+</div>

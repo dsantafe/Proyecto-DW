@@ -1,0 +1,28 @@
+﻿@model Proyecto.MVC.Models.EstadoIncidencia
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm())
+{
+    <div>
+        <h4>Eliminar</h4>
+        <h3 class="badge badge-danger">Esta seguro que desea eliminar el registro?</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <input id="Id" name="Id" value="@Model.Id" hidden />
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd>
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            </dd>
+        </dl>
+        <div class="form-actions no-color">
+            <input type="submit" value="Aceptar" class="btn btn-primary btn-sm" /> |
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary btn-sm" })
+        </div>
+
+    </div>
+}

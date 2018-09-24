@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bdGeneralModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="estado_incidencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="incidencia_comentarios" Relationship="Self.FK_incidencia_comentarios_estado_incidencia" FromRole="estado_incidencia" ToRole="incidencia_comentarios" />
+    <NavigationProperty Name="incidencia" Relationship="Self.FK_incidencia_estado_incidencia" FromRole="estado_incidencia" ToRole="incidencia" />
+  </EntityType>
+  <EntityType Name="incidencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="identificacion" Type="Int64" />
+    <Property Name="primer_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="segundo_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="primer_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="segundo_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado_incidencia_id" Type="Int32" />
+    <Property Name="tipo_incidencia_id" Type="Int32" />
+    <NavigationProperty Name="estado_incidencia" Relationship="Self.FK_incidencia_estado_incidencia" FromRole="incidencia" ToRole="estado_incidencia" />
+    <NavigationProperty Name="incidencia_comentarios" Relationship="Self.FK_incidencia_comentarios_incidencia" FromRole="incidencia" ToRole="incidencia_comentarios" />
+    <NavigationProperty Name="tipo_incidencia" Relationship="Self.FK_incidencia_tipo_incidencia" FromRole="incidencia" ToRole="tipo_incidencia" />
+  </EntityType>
+  <EntityType Name="incidencia_comentarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="incidencia_id" Type="Int32" />
+    <Property Name="comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado_incidencia_id" Type="Int32" />
+    <NavigationProperty Name="estado_incidencia" Relationship="Self.FK_incidencia_comentarios_estado_incidencia" FromRole="incidencia_comentarios" ToRole="estado_incidencia" />
+    <NavigationProperty Name="incidencia" Relationship="Self.FK_incidencia_comentarios_incidencia" FromRole="incidencia_comentarios" ToRole="incidencia" />
+  </EntityType>
+  <EntityType Name="tipo_incidencia">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="incidencia" Relationship="Self.FK_incidencia_tipo_incidencia" FromRole="tipo_incidencia" ToRole="incidencia" />
+  </EntityType>
+  <Association Name="FK_incidencia_comentarios_estado_incidencia">
+    <End Role="estado_incidencia" Type="Self.estado_incidencia" Multiplicity="0..1" />
+    <End Role="incidencia_comentarios" Type="Self.incidencia_comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado_incidencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="incidencia_comentarios">
+        <PropertyRef Name="estado_incidencia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_incidencia_estado_incidencia">
+    <End Role="estado_incidencia" Type="Self.estado_incidencia" Multiplicity="0..1" />
+    <End Role="incidencia" Type="Self.incidencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado_incidencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="incidencia">
+        <PropertyRef Name="estado_incidencia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_incidencia_comentarios_incidencia">
+    <End Role="incidencia" Type="Self.incidencia" Multiplicity="0..1" />
+    <End Role="incidencia_comentarios" Type="Self.incidencia_comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="incidencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="incidencia_comentarios">
+        <PropertyRef Name="incidencia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_incidencia_tipo_incidencia">
+    <End Role="tipo_incidencia" Type="Self.tipo_incidencia" Multiplicity="0..1" />
+    <End Role="incidencia" Type="Self.incidencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_incidencia">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="incidencia">
+        <PropertyRef Name="tipo_incidencia_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bdGeneralEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="estado_incidencia" EntityType="Self.estado_incidencia" />
+    <EntitySet Name="incidencia" EntityType="Self.incidencia" />
+    <EntitySet Name="incidencia_comentarios" EntityType="Self.incidencia_comentarios" />
+    <EntitySet Name="tipo_incidencia" EntityType="Self.tipo_incidencia" />
+    <AssociationSet Name="FK_incidencia_comentarios_estado_incidencia" Association="Self.FK_incidencia_comentarios_estado_incidencia">
+      <End Role="estado_incidencia" EntitySet="estado_incidencia" />
+      <End Role="incidencia_comentarios" EntitySet="incidencia_comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_incidencia_estado_incidencia" Association="Self.FK_incidencia_estado_incidencia">
+      <End Role="estado_incidencia" EntitySet="estado_incidencia" />
+      <End Role="incidencia" EntitySet="incidencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_incidencia_comentarios_incidencia" Association="Self.FK_incidencia_comentarios_incidencia">
+      <End Role="incidencia" EntitySet="incidencia" />
+      <End Role="incidencia_comentarios" EntitySet="incidencia_comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_incidencia_tipo_incidencia" Association="Self.FK_incidencia_tipo_incidencia">
+      <End Role="tipo_incidencia" EntitySet="tipo_incidencia" />
+      <End Role="incidencia" EntitySet="incidencia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

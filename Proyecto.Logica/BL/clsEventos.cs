@@ -34,5 +34,27 @@ namespace Proyecto.Logica.BL
             }
             catch (Exception ex) { throw ex; }
         }
+
+        public void createEventos(Models.clsEventos obclsEventos)
+        {
+            try
+            {
+                using (Entidades.bdGeneralEntities obDatos = new Entidades.bdGeneralEntities())
+                {
+                    obDatos.tbEventos.Add(new Entidades.tbEventos
+                    {
+                        evenDescripcion = obclsEventos.DESCRIPCION,
+                        evenFecha = obclsEventos.FECHA,
+                        evenNombre = obclsEventos.NOMBRE,
+                        evenParticipantes = obclsEventos.PARTICIPANTES,
+                        evenTodoDia = obclsEventos.TODO_DIA,
+                        evenUbicacion = obclsEventos.UBICACION,
+                        recoCodigo = obclsEventos.RELACIONADO_CON.CODIGO                        
+                    });
+                    obDatos.SaveChanges();
+                }
+            }
+            catch (Exception ex) { throw ex; }
+        }
     }
 }

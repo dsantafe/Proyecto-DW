@@ -1,0 +1,26 @@
+﻿@model Proyecto.MVC.Models.EstadoIncidencia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>Detalles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm" }) |
+    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-primary btn-sm" })
+</p>
+
+
