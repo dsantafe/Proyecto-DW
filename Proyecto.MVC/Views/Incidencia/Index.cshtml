@@ -1,0 +1,149 @@
+﻿@model Proyecto.MVC.Models.Incidencia.IndexLoad
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/Views/Incidencia.js?2018"></script>
+
+<h2>Incidencias</h2>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#NuevoIncidencia">
+    <i class="fa fa-plus-square"> Nuevo</i>
+</button>
+<br />
+<br />
+<table id="datos" class="table table-bordered">
+    <tr>
+        <th>Identificación</th>
+        <th>Primer nombre</th>
+        <th>Segundo nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Dirección</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Estado</th>
+        <th>Tipo</th>
+        <th>Opciones</th>
+    </tr>
+    @foreach (var item in Model.Incidencias)
+    {
+        <tr>
+            <td>@item.Identificacion</td>
+            <td>@item.PrimerNombre</td>
+            <td>@item.SegundoNombre</td>
+            <td>@item.PrimerApellido</td>
+            <td>@item.SegundoApellido</td>
+            <td>@item.Direccion</td>
+            <td>@item.Telefono</td>
+            <td>@item.Correo</td>
+            <td>@item.EstadoIncidencia.Descripcion</td>
+            <td>@item.TipoIncidencia.Descripcion</td>
+            <td>
+                @Html.ActionLink("Detalle", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+            </td>
+        </tr>
+    }
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="NuevoIncidencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Identificación</label>
+                                <input type="text" id="txtIdentificacion" name="txtIdentificacion" class="form-control"
+                                       placeholder="Ingrese identificación" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Primer nombre</label>
+                                <input type="text" id="txtPrimerNombre" name="txtPrimerNombre" class="form-control"
+                                       placeholder="Ingrese primer nombre" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Segundo nombre</label>
+                                <input type="text" id="txtSegundoNombre" name="txtSegundoNombre" class="form-control"
+                                       placeholder="Ingrese segundo nombre" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Primer apellido</label>
+                                <input type="text" id="txtPrimerApellido" name="txtPrimerApellido" class="form-control"
+                                       placeholder="Ingrese primer apellido" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Segundo apellido</label>
+                                <input type="text" id="txtSegundoApellido" name="txtSegundoApellido" class="form-control"
+                                       placeholder="Ingrese segundo apellido" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Dirección</label>
+                                <input type="text" id="txtDireccion" name="txtDireccion" class="form-control"
+                                       placeholder="Ingrese dirección" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Telefono</label>
+                                <input type="text" id="txtTelefono" name="txtTelefono" class="form-control"
+                                       placeholder="Ingrese telefono" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Correo</label>
+                                <input type="text" id="txtCorreo" name="txtCorreo" class="form-control"
+                                       placeholder="Ingrese correo" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Estado Incidencia</label>
+                                <select id="ddlEstadoIncidencia" name="ddlEstadoIncidencia" class="form-control">
+                                    @foreach (var item in Model.EstadoIncidencias)
+                                    {
+                                        <option value="@item.Id">@item.Descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">                           
+                            <div class="col-md-4">
+                                <label class="badge badge-dark">Tipo Incidencia</label>
+                                <select id="ddlTipoIncidencia" name="ddlTipoIncidencia" class="form-control">
+                                    @foreach (var item in Model.TipoIncidencias)
+                                    {
+                                        <option value="@item.Id">@item.Descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="btnGuardarIncidencia" name="btnGuardarIncidencia">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
